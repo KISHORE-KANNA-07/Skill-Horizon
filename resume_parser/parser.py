@@ -2,18 +2,20 @@ import fitz
 import re
 import spacy
 import pandas as pd
-import spacy
-import subprocess
 import importlib.util
+import subprocess
+import os
 
-# Check if the model is installed
-model_name = "en_core_web_sm"
-if importlib.util.find_spec(model_name) is None:
-    subprocess.run(["python", "-m", "spacy", "download", model_name])
+# ========== Safe spaCy Loader ==========
+def get_nlp():
+    model_name = "en_core_web_sm"
+    try:
+        return spacy.load(model_name)
+    except OSError:
+        subprocess.run(["python", "-m", "spacy", "download", model_name])
+        return spacy.load(model_name)
 
-
-nlp = spacy.load("en_core_web_sm")
-
+# ========== PDF Text Extraction ==========
 def extract_text_from_pdf(pdf_path):
     text = ""
     doc = fitz.open(pdf_path)
@@ -21,6 +23,7 @@ def extract_text_from_pdf(pdf_path):
         text += page.get_text()
     return text
 
+# ========== Entity Extractors ==========
 def extract_email(text):
     match = re.search(r'[\w\.-]+@[\w\.-]+', text)
     return match.group(0) if match else None
@@ -30,30 +33,24 @@ def extract_phone(text):
     return match.group(0).replace(" ", "") if match else None
 
 def extract_skills(text, skill_list):
-    found = []
     text = text.lower()
-    for skill in skill_list:
-        if skill.lower() in text:
-            found.append(skill)
-    return list(set(found))
+    return list({skill for skill in skill_list if skill.lower() in text})
 
 def extract_name(text):
-    # Try grabbing the first line if it's a name
     lines = text.strip().split('\n')
     for line in lines:
         line = line.strip()
         if line and "email" not in line.lower() and '@' not in line and len(line.split()) <= 4:
             return line.strip()
 
-    # If that fails, fallback to spaCy
+    nlp = get_nlp()
     doc = nlp(text[:300])
     for ent in doc.ents:
         if ent.label_ == "PERSON":
             return ent.text.strip()
-
     return None
 
-
+# ========== Master Parser ==========
 def parse_resume(pdf_path, skills_path="data/skills.csv"):
     text = extract_text_from_pdf(pdf_path)
     skill_df = pd.read_csv(skills_path)
