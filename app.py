@@ -214,9 +214,11 @@ st.markdown(f"<div class='container'><div class='main-title'>💼 AI Job Recomme
 uploaded_file = st.file_uploader("📄 Upload Your Resume (PDF)", type=["pdf"])
 
 if uploaded_file:
+    os.makedirs("resumes", exist_ok=True)  # ✅ Ensures the folder exists
     resume_path = os.path.join("resumes", uploaded_file.name)
     with open(resume_path, "wb") as f:
         f.write(uploaded_file.read())
+
 
     skills_path = "data/skills.csv"
     parsed_resume = parse_resume(resume_path, skills_path)
