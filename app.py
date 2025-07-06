@@ -121,26 +121,24 @@ with col3:
     dark_mode = st.toggle("🌙 Dark Mode", key="dark-mode-toggle")
 
 # ========== Custom Theme and Styles ==========
-
 st.markdown(f"""
     <style>
         :root {{
-            --text-light: #1a1a1a;
-            --text-dark: #f1f1f1;
+            --bg-light: #f5f7fa;
+            --bg-dark: #1e1e1e;
+            --text-light: #000000;
+            --text-dark: #ffffff;
             --primary-light: #0a66c2;
             --primary-dark: #66b2ff;
-            --card-bg-light: #ffffffcc;
-            --card-bg-dark: #2b2b2bcc;
-            --shadow-light: rgba(0, 0, 0, 0.08);
+            --card-bg-light: #ffffff;
+            --card-bg-dark: #2b2b2b;
+            --shadow-light: rgba(0, 0, 0, 0.1);
             --shadow-dark: rgba(0, 0, 0, 0.4);
         }}
 
-        html, body, .stApp {{
-            background: { 
-                "linear-gradient(135deg, #1e1e1e, #121212)" if dark_mode 
-                else "linear-gradient(135deg, #f5f7fa, #e2e8f0)" 
-            } !important;
-            color: var(--text-{ 'dark' if dark_mode else 'light' }) !important;
+        html, body {{
+            background-color: var(--bg-{ 'dark' if dark_mode else 'light' });
+            color: var(--text-{ 'dark' if dark_mode else 'light' });
         }}
 
         .main-title {{
@@ -148,13 +146,14 @@ st.markdown(f"""
             font-weight: 800;
             text-align: center;
             color: var(--primary-{ 'dark' if dark_mode else 'light' });
+            margin-top: 0.5rem;
         }}
 
         .subheader {{
             font-size: 1.2em;
             text-align: center;
             margin-bottom: 1.5rem;
-            color: var(--text-{ 'dark' if dark_mode else 'light' });
+            color: var(--card-{ 'dark' if dark_mode else 'light' });
         }}
 
         .resume-section, .job-card {{
@@ -164,7 +163,6 @@ st.markdown(f"""
             margin-bottom: 1.2rem;
             box-shadow: 0 4px 6px var(--shadow-{ 'dark' if dark_mode else 'light' });
             transition: transform 0.2s ease;
-            backdrop-filter: blur(6px);
         }}
 
         .job-card:hover {{
@@ -177,13 +175,8 @@ st.markdown(f"""
             color: var(--primary-{ 'dark' if dark_mode else 'light' });
         }}
 
-        .score-text {{
-            font-size: 0.95em;
-            color: var(--text-{ 'dark' if dark_mode else 'light' });
-        }}
-
         .score-bar-container {{
-            background-color: #ccc;
+            background-color: #f0f0f0;
             border-radius: 6px;
             height: 10px;
             margin-top: 8px;
@@ -197,6 +190,12 @@ st.markdown(f"""
             background-color: var(--primary-{ 'dark' if dark_mode else 'light' });
         }}
 
+        .score-text {{
+            margin-top: 6px;
+            font-size: 0.95em;
+            color: var(--text-{ 'dark' if dark_mode else 'light' });
+        }}
+
         .container {{
             max-width: 900px;
             margin: auto;
@@ -204,6 +203,7 @@ st.markdown(f"""
         }}
     </style>
 """, unsafe_allow_html=True)
+
 
 
 # ========== Title and Header ==========
