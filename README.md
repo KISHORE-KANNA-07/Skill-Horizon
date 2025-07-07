@@ -1,6 +1,6 @@
 # 🚀 Skill-Horizon – AI-Powered Job Recommendation System
 
-Skill-Horizon is a smart, resume-driven job recommendation system built using cutting-edge **Natural Language Processing (NLP)** and **machine learning algorithms**. It allows users to upload a resume, analyzes its content, and recommends the most relevant jobs from a curated dataset.
+Skill-Horizon is a smart, resume-driven job recommendation system built using cutting-edge **Natural Language Processing (NLP)** and **machine learning algorithms**. It allows users to upload a resume, analyzes its content, and recommends the most relevant IT jobs from a curated dataset.
 
 Whether you're a fresher or an experienced professional, Skill-Horizon helps you expand your potential to new horizons — intelligently and instantly.
 
@@ -162,6 +162,8 @@ Top matching jobs with:
 
  Real-time API fetching of jobs (e.g., LinkedIn/Indeed scraping)
 
+ Expand the dataset with multiple job domains (currently it recommend for IT jobs)
+
 👨‍💻 Author
 Kishore Kanna
 🎓 Student | 💼 CSE - AIML | 🎯 Passionate about AI Projects
@@ -169,4 +171,4 @@ Kishore Kanna
 
 ## 📜 License
 
-Licensed under the MIT License. See `[LICENSE](LICENSE)` for details.
+Licensed under the MIT License. See [LICENSE](LICENSE) for details.
