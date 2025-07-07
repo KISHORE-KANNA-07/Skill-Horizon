@@ -41,8 +41,8 @@ css_dark = """
 st.markdown(css_dark if dark_mode else css_light, unsafe_allow_html=True)
 
 # ==== Title ====
-st.markdown('<div class="main-title">💼 AI Job Recommendation System</div>', unsafe_allow_html=True)
-st.markdown('<p class="subheader">Upload your resume and discover the best IT job roles tailored to your skills 🚀</p>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">AI Job Recommendation System</div>', unsafe_allow_html=True)
+st.markdown('<p class="subheader">Upload your resume and discover the best IT job roles tailored to your skills </p>', unsafe_allow_html=True)
 
 # ==== Upload ====
 uploaded_file = st.file_uploader("📄 Upload Your Resume (PDF)", type=["pdf"])
