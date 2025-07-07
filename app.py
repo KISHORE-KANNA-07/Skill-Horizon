@@ -265,7 +265,7 @@ if uploaded_file:
 
         if filtered_matches:
             for job in filtered_matches:
-                score_color = f"linear-gradient(to right, #4caf50 {job['score']}%, #e0e0e0 {job['score']}%)"
+                score_color = f"linear-gradient(to right, #4caf50 {job['score']}%, #4caf50 {job['score']}%)"
                 st.markdown(f"""
                     <div class="job-card">
                         <div class="job-title">{job['title']}</div>
