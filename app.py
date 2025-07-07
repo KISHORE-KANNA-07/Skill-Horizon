@@ -109,7 +109,16 @@ logo_path = os.path.join("asserts", "logo.png")
 if os.path.exists(logo_path):
     col1, col2 = st.columns([1, 4])
     with col1:
-        st.image(Image.open(logo_path), width=180)
+        st.markdown(
+            """
+            <div style='text-align: center;'>
+                <img src='https://raw.githubusercontent.com/KISHORE-KANNA-07/Skill-Horizon/main/asserts/logo.png' 
+                    style='width: 120px; height: 120px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);' />
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
     with col2:
         st.markdown("<h1 style='margin-bottom: 0;'>Skill-Horizon</h1>", unsafe_allow_html=True)
         st.markdown("<p style='margin-top: -8px; color: gray;'>Expand Your Potential to New Horizons</p>", unsafe_allow_html=True)
