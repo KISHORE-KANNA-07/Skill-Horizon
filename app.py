@@ -216,8 +216,8 @@ st.markdown(f"""
 
 
 # ========== Title and Header ==========
-st.markdown(f"<div class='container'><div class='main-title'>💼 AI Job Recommendation System</div>" +
-            f"<p class='subheader'>Upload your resume and discover the best IT job roles tailored to your skills 🚀</p></div>", unsafe_allow_html=True)
+st.markdown(f"<div class='container'><div class='main-title'>AI Job Recommendation System</div>" +
+            f"<p class='subheader'>Upload your resume and discover the best IT job roles tailored to your skills</p></div>", unsafe_allow_html=True)
 
 # ========== Upload Section ==========
 uploaded_file = st.file_uploader("📄 Upload Your Resume (PDF)", type=["pdf"])
